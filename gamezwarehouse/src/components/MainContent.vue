@@ -17,7 +17,7 @@
         <input type="button" class="button" value="REGISTER">
       </div>
       <div id ="Center">
-        <img src="C:\Users\mrlft\Desktop\Valencia Stuff\Semester Spring 2024\Open Source Dev\Mockup\PS5-phy2.png" alt="Girl in a jacket" width="400" height="603.2">
+        <img src="../assets/PS5-phy2.png" alt="Spider-Man" width="400" height="603.2"><img
       </div>
       <div id ="Right">
         <h3>Check up on the latest games!</h3>
