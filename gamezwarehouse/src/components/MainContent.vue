@@ -1,3 +1,23 @@
+<script setup>
+import LeadForm from "@/components/LeadForm.vue"
+import Modal from './Modal.vue'
+</script>
+<script>
+export default {
+  data() {
+    return {
+      show: true,
+      load: false
+    }
+  },
+  mounted: function auto()
+  {
+    setInterval(() => {
+      this.show = !this.show
+    }, 5000)
+  }
+}
+</script>
 <template>
   <header>
   </header>
@@ -14,14 +34,21 @@
         <br>
         <h4>Not a member?<br>
           Click here to register now!</h4><br>
-        <input type="button" class="button" value="REGISTER">
+        <button @click="load = !load" type="button" class="button" value="REGISTER">REGISTER</button>
+        <teleport to="body">
+          <modal :show="load" @close="load= false">
+          </modal>
+        </teleport>
       </div>
       <div id ="Center">
-        <img src="../assets/PS5-phy2.png" alt="Spider-Man" width="400" height="603.2"><img
+        <Transition name="fade" appear>
+        <img v-if="show" src="../assets/PS5-phy2.png" alt="Spider-Man" width="400" height="603.2">
+        <img v-else src="../assets/SWI-phy2.png" alt="Spider-Man" width="400" height="603.2">
+        </Transition>
       </div>
       <div id ="Right">
         <h3>Check up on the latest games!</h3>
-        <iframe width="600" height="320" src="https://www.youtube.com/embed/7Bb_QpVUMJQ" title="The Biggest Games Coming in 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="600vw" height="320vh" src="https://www.youtube.com/embed/7Bb_QpVUMJQ" title="The Biggest Games Coming in 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </main>
@@ -48,9 +75,7 @@ main{
   display: inline-block;
   position: absolute;
   transform: translate(5vw, 10vh);
-//left: 100px;
   text-align: center;
-//padding-left: 10px;
 }
 h1{
   font-size: 72px;
@@ -89,6 +114,21 @@ p{
   position: absolute;
   transform: translate(42vw, 8vh);
 }
+img{
+  position: absolute;
+  transform: translate(0vw, 0vh);
+}
+.fade-enter-active, .fade-leave-active{
+  transition: opacity 3s ease-in-out;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 #Right{
   width: 30vw;
   display: inline-block;
@@ -97,6 +137,3 @@ p{
   text-align: center;
 }
 </style>
-<script setup>
-import NavBar from "@/components/NavBar.vue";
-</script>
