@@ -25,7 +25,6 @@ header {
   left: 0;
   width: 100vw;
   height: 9.5vh;
-  //background-color: #28398A;
 }
 h1{
   font-size: 30px;

@@ -52,11 +52,22 @@ export default {
       </div>
     </div>
   </main>
+  <footer>
+    <h2>Best Sellers</h2>
+  </footer>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-
+footer{
+  color: #F7FBFC;
+  left: 0;
+  top: 87.5vh;
+  position: absolute;
+  padding-left: 7.5vw;
+  width: 100vw;
+  background-image: url("../assets/Bottom Bar.png");
+}
 main{
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
