@@ -1,7 +1,6 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
 import MainContent from './components/MainContent.vue';
-import LeadForm from "@/components/LeadForm.vue";
 import ProductList from "@/components/ProductList.vue";
 </script>
 <template>

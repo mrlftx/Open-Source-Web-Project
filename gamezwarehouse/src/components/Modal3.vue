@@ -1,6 +1,8 @@
 <script setup>
+import ProductList from "@/components/ProductList.vue";
 const props = defineProps({
-  show: Boolean
+  show: Boolean,
+  text: String
 })
 </script>
 
@@ -10,20 +12,14 @@ const props = defineProps({
       <div class="container">
         <div class="header">
           <button class="exit-button" @click="$emit('close')">X</button>
-          <h1>Please enter your personal information.</h1>
+          <h1>Searching for: {{text}}</h1>
         </div>
 
         <div class="body">
-          <label for="name" id="label">User Name:</label>
-          <input type="text" id="text" name="name"><br><br>
-          <label for="email" id="label">Email Address:</label>
-          <input type="text" id="text" name="email"><br><br>
-          <label for="phone" id="label">Phone Number:</label>
-          <input type="text" id="text" name="phone">
+          <ProductList/>
         </div>
 
         <div class="footer">
-          <input type="submit" id="submit" value="Submit">
         </div>
       </div>
     </div>
@@ -45,24 +41,30 @@ const props = defineProps({
 }
 
 .container {
-  width: 35vw;
-  height: 50vh;
+  width: 90vw;
+  height: 86vh;
   margin: auto;
   padding: 20px 30px;
   background-color: #f2f2f2;
   border-radius: 25px;
   box-shadow: .15vw .15vh 10px #28398A;
   color: #3648A2;
+
 }
 
 .body {
-  margin: 20px 0;
+  margin: 1.5vh -1.5vw;
   font-size: 24px;
   line-height: 6vh;
   vertical-align: middle;
   font-family: 'Open Sans', sans-serif;
+  transform: translateY(1vh);
+  overflow-x: auto;
+  overflow-y: hidden;
 }
-
+.header{
+  //position: fixed;
+}
 .exit-button {
   float: right;
   height: 3vh;
@@ -78,29 +80,7 @@ const props = defineProps({
 h1{
   font-size: 30px;
 }
-#label{
-  position: absolute;
-  left: 35vw;
-}
-#text{
-  position: absolute;
-  height: 36px;
-  margin-top: 1vh;
-  right: 0;
-  transform: translateX(-35vw);
-}
-#submit{
-  position: absolute;
-  right: 0;
-  width: 7.5vw;
-  height: 5vh;
-  transform: translate(-46vw, 7vh);
-  background-color: #28398A;
-  color: #F7FBFC;
-  border-radius: 25px;
-  font-size: 24px;
-  cursor: pointer;
-}
+
 
 .modal-enter-from {
   opacity: 0;

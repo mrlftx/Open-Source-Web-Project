@@ -10,16 +10,14 @@ const props = defineProps({
       <div class="container">
         <div class="header">
           <button class="exit-button" @click="$emit('close')">X</button>
-          <h1>Please enter your personal information.</h1>
+          <h1>Enter in user name and password.</h1>
         </div>
 
         <div class="body">
           <label for="name" id="label">User Name:</label>
           <input type="text" id="text" name="name"><br><br>
-          <label for="email" id="label">Email Address:</label>
-          <input type="text" id="text" name="email"><br><br>
-          <label for="phone" id="label">Phone Number:</label>
-          <input type="text" id="text" name="phone">
+          <label for="password" id="label">Password:</label>
+          <input type="text" id="text" class="pass" name="password"><br><br>
         </div>
 
         <div class="footer">
@@ -46,7 +44,7 @@ const props = defineProps({
 
 .container {
   width: 35vw;
-  height: 50vh;
+  height: 40vh;
   margin: auto;
   padding: 20px 30px;
   background-color: #f2f2f2;
@@ -74,7 +72,12 @@ const props = defineProps({
   color: #F7FBFC;
   cursor: pointer;
 }
-
+.header{
+  padding-bottom: 2vh;
+}
+.pass{
+  -webkit-text-security: disc;
+}
 h1{
   font-size: 30px;
 }
@@ -88,13 +91,14 @@ h1{
   margin-top: 1vh;
   right: 0;
   transform: translateX(-35vw);
+  font-size: 20px;
 }
 #submit{
   position: absolute;
   right: 0;
   width: 7.5vw;
   height: 5vh;
-  transform: translate(-46vw, 7vh);
+  transform: translate(-46vw, -4.5vh);
   background-color: #28398A;
   color: #F7FBFC;
   border-radius: 25px;

@@ -1,5 +1,4 @@
 <script setup>
-import LeadForm from "@/components/LeadForm.vue"
 import Modal from './Modal.vue'
 </script>
 <script>

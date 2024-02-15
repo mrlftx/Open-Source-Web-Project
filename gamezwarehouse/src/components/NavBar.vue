@@ -1,11 +1,35 @@
+<script setup>
+import Modal2 from './Modal2.vue'
+import Modal3 from './Modal3.vue'
+</script>
+<script>
+export default {
+  //props:['search'],
+  data() {
+    return {
+      load: false,
+      load2: false,
+      search: ''
+    }
+  },
+}
+</script>
 <template>
   <header>
     <div id="nav">
       <div id="outer">
         <div id="inner">
           <h1 id="logo">GamezWarehouse</h1>
-          <input type="text" id="search" placeholder="Search">
-          <h1 id="login">Login</h1>
+          <input @keyup.enter="load2 = !load2" type="text" id="search" placeholder="Search" v-model="search">
+          <teleport to="body">
+            <modal3 :show="load2" :text="search" @close="load2= false">
+            </modal3>
+          </teleport>
+            <h1 @click="load = !load" id="login">Login</h1>
+          <teleport to="body">
+            <modal2 :show="load" @close="load= false">
+            </modal2>
+          </teleport>
         </div>
       </div>
     </div>
@@ -40,6 +64,7 @@ h1{
   text-align: center;
   display: inline-block;
   transform: translate(52vw, 1vh);
+  cursor: pointer;
 }
 #search{
   text-align: left;
