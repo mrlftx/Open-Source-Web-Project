@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <Transition name="modal">
-    <div v-if="show" class="mask" @click="$emit('close')">
+    <div v-if="show" class="mask" @click.self="$emit('close')">
       <div class="container">
         <div class="header">
           <button class="exit-button" @click="$emit('close')">X</button>
