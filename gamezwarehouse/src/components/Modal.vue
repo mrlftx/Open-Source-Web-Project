@@ -16,6 +16,8 @@ const props = defineProps({
         <div class="body">
           <label for="name" id="label">User Name:</label>
           <input type="text" id="text" name="name"><br><br>
+          <label for="pass" id="label">Password:</label>
+          <input type="text" id="text" name="pass"><br><br>
           <label for="email" id="label">Email Address:</label>
           <input type="text" id="text" name="email"><br><br>
           <label for="phone" id="label">Phone Number:</label>
@@ -46,7 +48,7 @@ const props = defineProps({
 
 .container {
   width: 35vw;
-  height: 50vh;
+  height: 55vh;
   margin: auto;
   padding: 20px 30px;
   background-color: #f2f2f2;
@@ -58,7 +60,7 @@ const props = defineProps({
 .body {
   margin: 20px 0;
   font-size: 24px;
-  line-height: 6vh;
+  line-height: 5vh;
   vertical-align: middle;
   font-family: 'Open Sans', sans-serif;
 }

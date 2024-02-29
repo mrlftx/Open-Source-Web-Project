@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mysql2": "^3.9.2",
     "vue": "^3.3.11"
   },
   "devDependencies": {
