@@ -137,5 +137,5 @@ h2{
   display: inline-block;
 }
 </style>
-<script setup>
+<script>
 </script>

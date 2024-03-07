@@ -7,4 +7,8 @@ const db = mysql.createConnection({
     database: "gamez",
 });
 
+db.connect((err) => {
+    if (err) throw err;
+    console.log("Connected successfully to MySql server")
+});
 export default db;
