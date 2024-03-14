@@ -3,7 +3,36 @@ const props = defineProps({
   show: Boolean
 })
 </script>
+<script>
+import axios from "axios";
 
+export default {
+  data() {
+    return {
+      userName: "",
+      password: "",
+      email: "",
+      phone: "",
+    };
+  },
+  methods: {
+    saveUser() {
+      try {
+        axios.post("http://localhost:5174/api/users", {
+          username: this.userName,
+          password: this.password,
+          email: this.email,
+          phone: this.phone
+        });
+        /*(this.userName = ""), (this.password = ""), (this.email = ""), (this.phone = "");
+        await this.router.push("/");*/
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+};
+</script>
 <template>
   <Transition name="modal">
     <div v-if="show" class="mask" @click.self="$emit('close')">
@@ -15,17 +44,17 @@ const props = defineProps({
 
         <div class="body">
           <label for="name" id="label">User Name:</label>
-          <input type="text" id="text" name="name"><br><br>
+          <input type="text" id="text" name="name" v-model="userName"><br><br>
           <label for="pass" id="label">Password:</label>
-          <input type="text" id="text" name="pass"><br><br>
+          <input type="text" id="text" name="pass" v-model="password"><br><br>
           <label for="email" id="label">Email Address:</label>
-          <input type="text" id="text" name="email"><br><br>
+          <input type="text" id="text" name="email" v-model="email"><br><br>
           <label for="phone" id="label">Phone Number:</label>
-          <input type="text" id="text" name="phone">
+          <input type="text" id="text" name="phone" v-model="phone">
         </div>
 
         <div class="footer">
-          <input type="submit" id="submit" value="Submit">
+          <input type="submit" id="submit" value="Submit" @click="saveUser">
         </div>
       </div>
     </div>
