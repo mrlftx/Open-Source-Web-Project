@@ -13,7 +13,7 @@ export const addUsers = (data, result) => {
 
 export const getUser = (username, result) => {
     db.query(
-        "SELECT * FROM users WHERE product_id = ?",
+        "SELECT * FROM users WHERE username = ?",
         [username],
         (err, results) => {
             if (err) {

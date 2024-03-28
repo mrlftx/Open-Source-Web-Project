@@ -1,5 +1,6 @@
 <script setup>
 import ProductList from "@/components/ProductList.vue";
+import SearchList from "@/components/SearchList.vue";
 const props = defineProps({
   show: Boolean,
   text: String
@@ -16,7 +17,7 @@ const props = defineProps({
         </div>
 
         <div class="body">
-          <ProductList/>
+          <SearchList :text="text"></SearchList>
         </div>
 
         <div class="footer">
