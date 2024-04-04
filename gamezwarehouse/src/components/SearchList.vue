@@ -6,6 +6,7 @@ const props = defineProps({
 <script>
 import axios from "axios";
 
+var show = false;
 export default {
   data() {
     return {
@@ -21,19 +22,25 @@ export default {
         const response = await axios.get(`http://localhost:5174/api/products/${this.text}`);
           console.log(response);
         this.items = response.data;
+        if(response.data.length){
+          show = false;
+        }
+        else{
+          show = true;
+        }
         console.log(this.items);
       } catch (err) {
         console.log(err);
       }
-    }
+    },
   }
 }
 </script>
 
 <template>
   <main>
-    <div id="list" >
-      <div class="odd" id ="container" v-for="item in items" :key="item.id"><img src="../assets/gow.png" id="image">
+    <div id="list" ><h3 v-if="show">Search not found</h3>
+      <div class="odd" id ="container" v-for="item in items" :key="item.id"><img :src="item.image" id="image">
         <div id="desc">
           <div id="title"><h2>{{ item.name }}<br>{{ item.console }}</h2></div>
           <div id="rate"><h1 class="left">
@@ -88,7 +95,7 @@ export default {
 }
 main{
   background-color: #f2f2f2;
-  width: 100vw;
+  width: auto;
   position: relative;
   height: 70vh;
   font-family: 'Open Sans', sans-serif;
@@ -119,5 +126,12 @@ h1{
 h2{
   font-size: 30px;
   display: inline-block;
+}
+h3{
+  font-size: 50px;
+  display: inline-block;
+  position: relative;
+  left: 35vw;
+  top: 40%
 }
 </style>

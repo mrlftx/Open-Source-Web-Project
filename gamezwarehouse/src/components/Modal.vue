@@ -16,14 +16,33 @@ export default {
     };
   },
   methods: {
-    saveUser() {
+    async saveUser() {
       try {
-        axios.post("http://localhost:5174/api/users", {
+        await axios.post("http://localhost:5174/api/users", {
           username: this.userName,
           password: this.password,
           email: this.email,
           phone: this.phone
-        });
+        }).then((res) => {
+
+          if(res.data.msg === "Error!") {
+            let errors;
+            errors = res.data.errors.errs;
+            console.log(res.data.errors); //For debugging purposes
+            let errorMsg = "";
+
+            for (let i = 0; i < errors.length; i++) {
+              errorMsg += `${errors[i]}\n`;
+            }
+
+            alert(errorMsg)
+          }
+          else{
+            console.log("Login successful")
+            alert("User successfully registered.")}
+        }
+        );
+
         /*(this.userName = ""), (this.password = ""), (this.email = ""), (this.phone = "");
         await this.router.push("/");*/
       } catch (err) {
