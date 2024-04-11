@@ -3,6 +3,38 @@ const props = defineProps({
   show: Boolean
 })
 </script>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      userName: "",
+      password: "",
+    };
+  },
+  methods: {
+    async loginUser(){
+      try{
+        await axios.post(`http://localhost:5174/api/users/login`, {
+          username: this.userName,
+          password: this.password,
+        }).then((res) => {
+          let msg = "";
+          if(res.data.errMsg === "Incorrect username or password."){
+            msg = res.data.errMsg;
+          } else {
+            console.log(res.data.username)
+            msg = res.data.username + " has logged in.";
+          }
+          alert(msg);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+}
+</script>
 
 <template>
   <Transition name="modal">
@@ -15,13 +47,13 @@ const props = defineProps({
 
         <div class="body">
           <label for="name" id="label">User Name:</label>
-          <input type="text" id="text" name="name"><br><br>
+          <input type="text" id="text" name="name" v-model="userName"><br><br>
           <label for="password" id="label">Password:</label>
-          <input type="text" id="text" class="pass" name="password"><br><br>
+          <input type="text" id="text" class="pass" name="password" v-model="password"><br><br>
         </div>
 
         <div class="footer">
-          <input type="submit" id="submit" value="Submit">
+          <input type="submit" id="submit" value="Submit" @click="loginUser">
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import express from "express"
-import {createUser, showUsers} from "../controllers/users.js";
+import {createUser, loginUsers} from "../controllers/users.js";
 import {showProductByName, showProducts} from "../controllers/product.js";
 
 const router = express.Router();
 
-router.get("/api/users/:username", showUsers);
+router.post("/api/users/login", loginUsers);
 
 router.get("/api/products/:name", showProductByName);
 

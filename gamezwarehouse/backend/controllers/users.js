@@ -47,12 +47,18 @@ function validatePhone(phone) {
     return errors;
 }
 
-export const showUsers = (req, res) => {
-    getUser(req.params.username, (err, results) => {
+export const loginUsers = (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    getUser(username, (err, results) => {
+        console.log(results)
         if (err) {
             res.send(err);
-        } else {
+        } else if(results.password === password) {
             res.json(results);
+        } else {
+            res.json(200, {errMsg: "Incorrect username or password."})
         }
     });
 };
