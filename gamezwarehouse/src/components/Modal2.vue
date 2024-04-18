@@ -2,6 +2,7 @@
 const props = defineProps({
   show: Boolean
 })
+const emits = defineEmits(['close'])
 </script>
 <script>
 import axios from "axios";
@@ -27,6 +28,8 @@ export default {
             msg = res.data.username + " has logged in.";
           }
           alert(msg);
+          if (msg !== "Incorrect username or password."){
+          this.$emit('close');}
         });
       } catch (err) {
         console.log(err);

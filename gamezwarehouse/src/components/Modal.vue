@@ -39,12 +39,10 @@ export default {
           }
           else{
             console.log("Login successful")
-            alert("User successfully registered.")}
+            alert("User successfully registered.")
+            this.$emit('close')}
         }
         );
-
-        /*(this.userName = ""), (this.password = ""), (this.email = ""), (this.phone = "");
-        await this.router.push("/");*/
       } catch (err) {
         console.log(err);
       }
